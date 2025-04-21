@@ -10,7 +10,7 @@ module.exports = {
         await interaction.deferReply({ ephemeral: true });
 
         // Define the target channel ID
-        const targetChannelId = '1304795409704681532';
+        const targetChannelId = `${interaction.channel.id}`;
         const banner = "https://cdn.discordapp.com/attachments/1304716049794469959/1304796598793928704/Information_3.png?ex=6730b207&is=672f6087&hm=da17cdd358688822c05388f53a82067466d64dde3aa4fc8f84db2de4c72177df&";
 
         // Fetch the channel using the client
