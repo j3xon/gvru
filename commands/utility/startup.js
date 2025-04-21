@@ -10,7 +10,7 @@ module.exports = {
                 .setRequired(true)),
     
     async execute(interaction) {
-        const requiredRoleId = '1304808118840197120';
+        const requiredRoleId = '1343059207900889140';
         if (!interaction.member.roles.cache.has(requiredRoleId)) {
             return interaction.reply({
                 content: "You do not have permission to use this command.",
