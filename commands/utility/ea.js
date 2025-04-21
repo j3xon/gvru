@@ -11,11 +11,12 @@ module.exports = {
   
   async execute(interaction) {
     try {
-      const staffRoleId = '1304808118840197120';
+      const staffRoleId = '1343059207900889140';
       const earlyAccessRoleIds = [
-        '1305203640943775794',
-        '1304706751530139718',   // First role to be pinged
-        '1305203779951526039' // Second role to be pinged
+        '1360209261069602970',
+        '1343056628768833566',   // First role to be pinged
+        '1360209202957779194',
+        '1360209346939850773' // Second role to be pinged
       ];
 
       // Check if the user has the required role
