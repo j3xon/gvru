@@ -8,7 +8,7 @@ module.exports = {
 
     async execute(interaction) {
         // Check if the user has the required role
-        const requiredRoleId = '1304808118840197120';
+        const requiredRoleId = '1343059207900889140';
         if (!interaction.member.roles.cache.has(requiredRoleId)) {
             return await interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
         }
