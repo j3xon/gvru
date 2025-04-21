@@ -37,7 +37,7 @@ module.exports = {
                 .setRequired(true)),
 
     async execute(interaction) {
-        const requiredRoleId = '1304808118840197120'; // Required role ID for verification
+        const requiredRoleId = '1343059207900889140'; // Required role ID for verification
 
         // Check if user has the required role
         if (!interaction.member.roles.cache.has(requiredRoleId)) {
