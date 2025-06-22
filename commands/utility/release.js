@@ -37,9 +37,7 @@ module.exports = {
                 .setRequired(true)),
 
     async execute(interaction) {
-        const requiredRoleId = '1343059207900889140'; // Required role ID for verification
-
-        // Check if user has the required role
+        const requiredRoleId = '1343059207900889140';
         if (!interaction.member.roles.cache.has(requiredRoleId)) {
             return interaction.reply({ content: 'You do not have the required role to use this command.', ephemeral: true });
         }
