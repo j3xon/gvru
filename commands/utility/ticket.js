@@ -23,17 +23,14 @@ module.exports = {
                 .setRequired(true)),
 
     async execute(interaction) {
-        // Role IDs that are allowed to use this command
         const allowedRoleIds = ['1304564863082692719'];
-
-        // Check if the user has one of the allowed roles
         const hasRole = interaction.member.roles.cache.some(role => allowedRoleIds.includes(role.id));
 
         if (!hasRole) {
             const embed = new EmbedBuilder()
                 .setTitle('Role Not Found')
                 .setDescription('You do not have permission to use this command.')
-                .setColor('#FF0000'); // Red color for error
+                .setColor('#FF0000');
 
             return interaction.reply({ embeds: [embed], ephemeral: true });
         }
@@ -45,7 +42,6 @@ module.exports = {
         const userId = user.id;
 
         try {
-            // Prepare the ticket data
             const ticketData = new Ticket({
                 userId,
                 offense,
@@ -54,7 +50,6 @@ module.exports = {
                 date: new Date()
             });
 
-            // Save the ticket in the database
             await ticketData.save();
 
             const replyEmbed = new EmbedBuilder()
