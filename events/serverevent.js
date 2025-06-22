@@ -5,8 +5,7 @@ module.exports = {
     async execute(interaction) {
         const rp = "https://cdn.discordapp.com/attachments/1304716049794469959/1304724057597673503/Information_2.png?ex=67306e77&is=672f1cf7&hm=1e7148ba2060636f169ca5b69a8a3a31203cb6eba08fb4dc30a7b4fe22d177c4&";
         const main = "https://cdn.discordapp.com/attachments/1304716049794469959/1304723543870935110/Information_1.png?ex=67306dfd&is=672f1c7d&hm=de3392aacfe331adea6130a8c962f1f013def2f94626e6e9e4980dbd7b1969ca&";
-        
-        // Check if the interaction is a select menu and if it has the correct customId
+
         if (interaction.isStringSelectMenu() && interaction.customId === 'workdummy') {
             // Handle the selection for the 'serverInfo' option
             if (interaction.values[0] === 'serverInfo') {
