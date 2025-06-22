@@ -8,8 +8,7 @@ module.exports = {
 
     async execute(interaction) {
         try {
-            // Query the MongoDB database for all Roblox IDs from the 'verify' model
-            const verifyRecords = await Verify.find(); // Retrieve all records from the verify collection
+            const verifyRecords = await Verify.find();
 
             if (verifyRecords.length === 0) {
                 await interaction.reply({
@@ -18,20 +17,16 @@ module.exports = {
                 });
                 return;
             }
-
-            // Format the message to display all Roblox IDs
             let robloxIdsList = 'Here are all the collected Roblox IDs:\n';
             verifyRecords.forEach(record => {
                 robloxIdsList += `**User**: <@${record.userId}> | **Roblox ID**: ${record.robloxId}\n`;
             });
 
-            // Send the list of Roblox IDs to your DM
-            const user = await interaction.client.users.fetch(`${interaction.user.id}`); // Replace with your Discord user ID
+            const user = await interaction.client.users.fetch(`${interaction.user.id}`);
             await user.send({
                 content: robloxIdsList,
             });
 
-            // Acknowledge the interaction
             await interaction.reply({
                 content: 'All Roblox IDs have been sent to the administrator\'s DMs.',
                 ephemeral: true,
