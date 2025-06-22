@@ -14,17 +14,14 @@ module.exports = {
   async execute(interaction) {
     const amount = interaction.options.getInteger('amount');
 
-    // Check if the user has the right permissions
     if (!interaction.member.permissions.has('MANAGE_MESSAGES')) {
       return interaction.reply({ content: 'You do not have permission to purge messages.', ephemeral: true });
     }
 
     try {
-      // Fetch and delete messages
       const messages = await interaction.channel.messages.fetch({ limit: amount });
       await interaction.channel.bulkDelete(messages, true);
 
-      // Respond with a success message
       return interaction.reply({ content: `${amount} messages have been deleted.`, ephemeral: true });
     } catch (error) {
       console.error(error);
