@@ -35,16 +35,13 @@ module.exports = {
         const userId = user.id;
 
         try {
-            // Find existing license data for the user
             let license = await License.findOne({ userId });
 
             if (license) {
-                // If a license exists, update it
                 license.status = status;
                 license.date = new Date();
                 await license.save();
             } else {
-                // If no license exists, create a new one
                 license = new License({ userId, status, date: new Date() });
                 await license.save();
             }
