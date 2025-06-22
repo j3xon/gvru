@@ -14,17 +14,15 @@ module.exports = {
       const staffRoleId = '1343059207900889140';
       const earlyAccessRoleIds = [
         '1360209261069602970',
-        '1343056628768833566',   // First role to be pinged
+        '1343056628768833566',
         '1360209202957779194',
-        '1360209346939850773' // Second role to be pinged
+        '1360209346939850773'
       ];
 
-      // Check if the user has the required role
       if (!interaction.member.roles.cache.has(staffRoleId)) {
         return await interaction.reply({ content: 'You do not have permission to execute this command.', ephemeral: true });
       }
 
-      // Acknowledge the interaction and respond with an ephemeral message
       await interaction.reply({ content: 'Early access released!', ephemeral: true });
 
       const link = interaction.options.getString('link');
@@ -44,13 +42,11 @@ module.exports = {
 
       const row = new ActionRowBuilder().addComponents(button);
 
-      // Send the embed publicly with role pings
       const message = await interaction.channel.send({
         embeds: [embed],
         components: [row]
       });
 
-      // Log the command execution as an embed
       const logChannelId = '1304564515844919296';
       const logChannel = interaction.guild.channels.cache.get(logChannelId);
       if (logChannel) {
@@ -69,7 +65,6 @@ module.exports = {
 
       const filter = i => i.customId === 'early_access_link' && i.isButton();
 
-      // Create a persistent interaction collector with no timeout
       const collector = message.createMessageComponentCollector({ filter });
 
       collector.on('collect', async i => {
