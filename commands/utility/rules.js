@@ -40,7 +40,6 @@ module.exports = {
                     [Section Designs](https://discord.gg/AtGUXz6QN4)`)
                 .setColor('#8accff');
 
-            // Create the dropdown (select menu) with emojis in the label
             const selectMenu = new StringSelectMenuBuilder()
                 .setCustomId('workdummy')
                 .setPlaceholder('Select Information Type')
