@@ -2,12 +2,11 @@ require("dotenv").config();
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v10"); // Update to v10 for the latest version
-const mongoose = require("mongoose"); // Import Mongoose
+const { Routes } = require("discord-api-types/v10");
+const mongoose = require("mongoose");
 
 const { token, MONGO_URI } = process.env;
 
-// Connect to MongoDB using Mongoose (Updated for v4+ of MongoDB driver)
 mongoose.connect(MONGO_URI)
   .then(() => console.log("Connected to MongoDB successfully!"))
   .catch((err) => console.error("MongoDB connection error:", err));
@@ -16,7 +15,6 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
 client.commandArray = [];
 
-// Function to handle events
 const handleEvents = async () => {
   const eventFiles = fs.readdirSync('./events').filter((file) => file.endsWith('.js'));
   for (const file of eventFiles) {
@@ -26,7 +24,6 @@ const handleEvents = async () => {
   }
 };
 
-// Function to handle commands
 const handleCommands = async () => {
   const commandFolders = fs.readdirSync('./commands');
   for (const folder of commandFolders) {
@@ -41,7 +38,7 @@ const handleCommands = async () => {
 
   const clientId = "1362437827677257788";
   const guildId = "1025957521879486485";
-  const rest = new REST({ version: '10' }).setToken(token); // Update to v10
+  const rest = new REST({ version: '10' }).setToken(token);
 
   try {
     await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
@@ -53,11 +50,9 @@ const handleCommands = async () => {
   }
 };
 
-// Attach the functions to the client
 client.handleEvents = handleEvents;
 client.handleCommands = handleCommands;
 
-// Initialize the bot
 (async () => {
   await client.handleEvents();
   await client.handleCommands();
