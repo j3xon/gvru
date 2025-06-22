@@ -14,7 +14,6 @@ module.exports = {
             const selectedValue = values[0];
             let embeds = [];
 
-            // Different ephemeral messages for each option
             if (selectedValue === 'rp') {
 
                 const rpEmbed = new EmbedBuilder()
@@ -51,9 +50,6 @@ module.exports = {
 
                 embeds.push(npEmbed);
             } else if (selectedValue === 'mp') {
-                // First embed for the perks details
-                
-                // Second embed for the detailed price list
                 const mpDetailsEmbed = new EmbedBuilder()
                     .setDescription(`
                         To purchase the perks listed below, kindly reach out to <@1114487029925937232> via direct message. Our team is ready to assist you with any inquiries and facilitate your purchase. Thank you for your interest!
@@ -69,7 +65,6 @@ module.exports = {
                 embeds.push(mpDetailsEmbed);
             }
 
-            // Send the embeds in one interaction
             await interaction.reply({ embeds, ephemeral: true });
         }
     }
