@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissonFlags, Permisson, PermissionsBitField } = require('discord.js');
-const Verify = require('../../models/verify'); // Import the Mongoose model from the correct path
+const Verify = require('../../models/verify');
 
 module.exports = {
     data: new SlashCommandBuilder()
